@@ -1,0 +1,127 @@
+/* MOSAIC design tokens — docs/04_DESIGN_SYSTEM.md v3 §2. Change both together. */
+@import 'tailwindcss';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+/* Licensed, self-hosted brand fonts (docs/04. FONTS). */
+@font-face {
+  font-family: 'Aptos';
+  src: url('../assets/fonts/aptos.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Aptos';
+  src: url('../assets/fonts/aptos-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Aptos';
+  src: url('../assets/fonts/aptos-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+/* Eurostile ships Regular only; synthetic bold is disabled where it is used (.font-title). */
+@font-face {
+  font-family: 'Eurostile';
+  src: url('../assets/fonts/eurostile.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+/* Wordmark only (brand board: Arkibal Display Bold). */
+@font-face {
+  font-family: 'Arkibal Display';
+  src: url('../assets/fonts/ArkibalDisplay-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Aptos', system-ui, sans-serif;
+  --font-title: 'Eurostile', 'Aptos', system-ui, sans-serif;
+  --font-display: 'Arkibal Display', 'Eurostile', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-pix-blue: #032f9b;
+  --color-pix-blue-75: #4263b4;
+  --color-pix-blue-50: #8197cd;
+  --color-pix-blue-25: #c0cbe6;
+  --color-pix-blue-10: #e6ebf5;
+  --color-pix-yellow: #ffcd01;
+  --color-pix-yellow-25: #fff3bf;
+  --color-pix-yellow-10: #fff9e6;
+
+  --color-ink: #333333;
+  --color-ink-muted: #666666;
+  --color-canvas: #f8f6f1;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f0eee9;
+  --color-line: #e6e3dc;
+
+  --color-success: #146c2e;
+  --color-success-surface: #e7f4ea;
+  --color-warning-ink: #7a5600;
+  --color-warning-surface: #fff3bf;
+  --color-danger: #a32a21;
+  --color-danger-surface: #fbe9e7;
+
+  --color-status-operational: #198038;
+  --color-status-maintenance: #ffcd01;
+  --color-status-offline: #c0362c;
+
+  --text-display: 2rem;
+  --text-display--line-height: 2.375rem;
+  --text-title-lg: 1.75rem;
+  --text-title-lg--line-height: 2.125rem;
+  --text-title-md: 1.375rem;
+  --text-title-md--line-height: 1.75rem;
+  --text-title-sm: 1.125rem;
+  --text-title-sm--line-height: 1.5rem;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.3125rem;
+  --text-body-sm: 0.8125rem;
+  --text-body-sm--line-height: 1.1875rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+  .font-title {
+    font-synthesis: none;
+    font-weight: 400;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-pix-blue);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility eyebrow {
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}

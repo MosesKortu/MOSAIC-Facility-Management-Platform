@@ -1,0 +1,21 @@
+# Local development + test database. Two databases in one server: mosaic (dev) and mosaic_test.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: mosaic
+      POSTGRES_PASSWORD: mosaic
+      POSTGRES_DB: mosaic
+    ports:
+      - "54329:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # TCP probe of mosaic_test: the init-time server is socket-only, so this passes only after init scripts ran.
+      test: ["CMD-SHELL", "psql -h 127.0.0.1 -U mosaic -d mosaic_test -c 'select 1'"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  pgdata:

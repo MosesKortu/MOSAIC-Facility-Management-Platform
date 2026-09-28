@@ -1,0 +1,30 @@
+{
+  "name": "mosaic",
+  "private": true,
+  "packageManager": "pnpm@12.4.2",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "db:up": "docker compose up -d --wait",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @mosaic/api db:migrate",
+    "db:rollback": "pnpm --filter @mosaic/api db:rollback",
+    "schema:doc": "pnpm --filter @mosaic/api schema:doc",
+    "dev:api": "pnpm --filter @mosaic/api dev",
+    "dev:web": "pnpm --filter @mosaic/web dev",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "db:seed": "pnpm --filter @mosaic/api db:seed",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.70.1"
+  },
+  "type": "module"
+}

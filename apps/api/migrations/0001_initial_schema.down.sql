@@ -1,0 +1,30 @@
+-- Reverses 0001 completely (dependency order).
+DROP TABLE IF EXISTS notifications;
+DROP TABLE IF EXISTS audit_log;
+DROP FUNCTION IF EXISTS reject_audit_log_mutation();
+DROP TABLE IF EXISTS session_events;
+DROP TABLE IF EXISTS equipment_status_events;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS user_certifications;
+DROP TABLE IF EXISTS training_modules;
+DROP TABLE IF EXISTS support_tariffs;
+DROP TABLE IF EXISTS equipment_availability_windows;
+DROP TABLE IF EXISTS equipment;
+DROP TABLE IF EXISTS grant_group_allocations;
+DROP TABLE IF EXISTS grants;
+DROP FUNCTION IF EXISTS check_grant_not_over_allocated();
+DROP TABLE IF EXISTS group_memberships;
+DROP TABLE IF EXISTS groups;
+DROP TABLE IF EXISTS external_user_sponsors;
+DROP FUNCTION IF EXISTS check_external_user_sponsor();
+DROP TABLE IF EXISTS users;
+DROP TYPE IF EXISTS session_event_source;
+DROP TYPE IF EXISTS session_event_state;
+DROP TYPE IF EXISTS practical_status;
+DROP TYPE IF EXISTS equipment_status;
+DROP TYPE IF EXISTS support_tier;
+DROP TYPE IF EXISTS booking_status;
+DROP TYPE IF EXISTS facility_code;
+DROP TYPE IF EXISTS user_type;
+DROP TYPE IF EXISTS user_role;
+-- btree_gist is left installed: extensions are shared database infrastructure.
